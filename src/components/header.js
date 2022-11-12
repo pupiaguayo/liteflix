@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import { HeaderContainer } from "../styles/header-container";
-import MoviesContext from "../context/movies/movies-context";
 import { AddMovieButton } from "../utils/add-movie-button";
 import {
   NotificationBellIcon,
@@ -15,12 +14,6 @@ export const Header = () => {
   const showSidebar = () => {
     setSidemenu(true);
   };
-
-  const { getPopularMovies, getStarMovie } = useContext(MoviesContext);
-  useEffect(() => {
-    getPopularMovies();
-    getStarMovie();
-  }, [getPopularMovies, getStarMovie]);
 
   return (
     <HeaderContainer>
