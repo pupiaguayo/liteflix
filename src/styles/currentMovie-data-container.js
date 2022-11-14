@@ -18,6 +18,12 @@ export const CurrentMovieDataContainer = styled.div`
     }
   }
   h2 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    height: auto;
+    text-overflow: ellipsis;
     font-weight: 500;
     font-size: 5.5em;
     letter-spacing: 8px;
@@ -37,6 +43,9 @@ export const CurrentMovieDataContainer = styled.div`
     text-align: center;
     p {
       margin-top: 15vh;
+    }
+    h2{
+      white-space: normal;
     }
     div {
       margin: auto;

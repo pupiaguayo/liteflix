@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Header } from "../utils/custom-header";
 import { CurrentMovieData } from "../components/current-movie-data";
 import { MoviesColumn } from "../components/movies-column";
+import { ModalMovies } from "../utils/modal";
 
 const ContainerHome = styled.div`
   padding: 0 60px;
@@ -19,7 +20,7 @@ const ContainerHome = styled.div`
   background-position: center center;
 
   @media screen and (max-width: 900px) {
-    height: 100%;
+    overflow: scroll;
     padding: 0 15px;
     font-size: 12px;
     background-image: linear-gradient(rgba(36, 36, 36, 0.3), #202020, #202020),
@@ -30,7 +31,7 @@ const ContainerHome = styled.div`
   }
 `;
 export const Home = () => {
-  const { starMovie, getStarMovie, getPopularMovies } =
+  const { starMovie, modalState, getStarMovie, getPopularMovies } =
     useContext(MoviesContext);
   let imageUrl = starMovie.backdrop_path;
   let posterUrl = starMovie.poster_path;
@@ -48,6 +49,7 @@ export const Home = () => {
       <Header />
       <CurrentMovieData title={starMovie.title} />
       <MoviesColumn />
+      {modalState && <ModalMovies />}
     </ContainerHome>
   );
 };

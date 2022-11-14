@@ -5,18 +5,13 @@ import { MoviesContainer } from "../styles/movies-container";
 import { Select } from "../utils/dropdown-select";
 
 export const MoviesColumn = () => {
-  const { popularMovies } = useContext(MoviesContext);
-  let options = [
-    "POPULARES",
-    "MIS PELICULAS",
-  ];
+  const { popularMovies, dropdownValue } = useContext(MoviesContext);
+  let options = ["POPULARES", "MIS PELICULAS"];
+  let savedItem = localStorage.getItem("formValues");
   return (
     <MoviesContainer>
-      <Select
-        label="PELICULAS"
-        values={options}
-      />
-      {popularMovies?.length
+      <Select label="POPULARES" values={options} />
+      {dropdownValue === "POPULARES"
         ? popularMovies
             ?.slice(0, 4)
             .map((movie) => (
@@ -27,7 +22,14 @@ export const MoviesColumn = () => {
                 year={movie.release_date}
               ></MovieCard>
             ))
-        : null}
+        : savedItem
+            ?.slice(0, 1)
+            .map((movie) => (
+              <MovieCard
+                title={movie.title}
+                urlMovie={movie.backdrop_path}
+              ></MovieCard>
+            ))}
     </MoviesContainer>
   );
 };

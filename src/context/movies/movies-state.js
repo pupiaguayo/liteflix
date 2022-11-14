@@ -1,5 +1,10 @@
 import React, { useReducer } from "react";
-import { GET_POPULAR_MOVIES, GET_STAR_MOVIE } from "../types";
+import {
+  GET_MODAL_STATE,
+  GET_POPULAR_MOVIES,
+  GET_STAR_MOVIE,
+  GET_DROPDOWN_VALUE,
+} from "../types";
 
 import MoviesContext from "./movies-context";
 import MoviesReducer from "./movies-reducer";
@@ -8,6 +13,8 @@ export const MoviesState = (props) => {
   const initialState = {
     popularMovies: [],
     starMovie: [],
+    modalState: false,
+    dropdownValue: "POPULARES",
   };
 
   const [state, dispatch] = useReducer(MoviesReducer, initialState);
@@ -36,13 +43,23 @@ export const MoviesState = (props) => {
       console.log(e);
     }
   };
+  const getModalState = (statex) => {
+    dispatch({ type: GET_MODAL_STATE, payload: statex });
+  };
+  const getDropdownValue = (dropdownValue) => {
+    dispatch({ type: GET_DROPDOWN_VALUE, payload: dropdownValue });
+  };
   return (
     <MoviesContext.Provider
       value={{
         popularMovies: state.popularMovies,
         starMovie: state.starMovie,
+        modalState: state.modalState,
+        dropdownValue: state.dropdownValue,
         getPopularMovies,
         getStarMovie,
+        getModalState,
+        getDropdownValue,
       }}
     >
       {props.children}

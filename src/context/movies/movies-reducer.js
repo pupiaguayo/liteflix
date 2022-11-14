@@ -1,4 +1,4 @@
-import { GET_POPULAR_MOVIES, GET_STAR_MOVIE } from "../types";
+import { GET_POPULAR_MOVIES, GET_STAR_MOVIE, GET_MODAL_STATE, GET_DROPDOWN_VALUE } from "../types";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state, action) => {
@@ -15,6 +15,16 @@ export default (state, action) => {
         ...state,
         starMovie: payload,
       };
+    case GET_MODAL_STATE:
+      return {
+        ...state,
+        modalState: payload,
+      };
+      case GET_DROPDOWN_VALUE:
+        return {
+          ...state,
+          dropdownValue: payload,
+        };
     default:
       return state;
   }

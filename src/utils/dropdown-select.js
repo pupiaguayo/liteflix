@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import MoviesContext from "../context/movies/movies-context";
 import styled, { css } from "styled-components";
 import { ArrowDropdown } from "./icons/icons";
 
@@ -78,6 +79,7 @@ const DropdownItem = styled.div`
 `;
 
 export const Select = ({ label, values, onChange }) => {
+  const { getDropdownValue } = useContext(MoviesContext);
   const [currentValue, setCurrentValue] = useState("");
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
@@ -88,6 +90,7 @@ export const Select = ({ label, values, onChange }) => {
   };
   const handleValueChange = (value) => {
     setCurrentValue(value);
+   getDropdownValue(value);
   };
   const handleChange = (value) => {
     handleValueChange(value);
