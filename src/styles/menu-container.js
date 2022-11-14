@@ -7,6 +7,8 @@ export const MenuContainer = styled.div`
   width: 100vw;
   height: 100vh;
   position: fixed;
+  transition: all ease-in-out 1000ms;
+  z-index: 1;
   nav {
     background: rgba(36, 36, 36, 0.9);
     top: 0;
@@ -20,13 +22,13 @@ export const MenuContainer = styled.div`
       align-items: center;
       height: 80px;
       padding: 0 65px;
-
-      span > *{
-    margin-left: 25px;
+      button {
+        border: none;
+        background-color: transparent;
       }
     }
     ul {
-        padding: 0 80px;
+      padding: 0 80px;
       li {
         padding: 30px 0;
         list-style: none;

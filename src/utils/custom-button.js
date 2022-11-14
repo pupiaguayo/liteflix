@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ButtonStyle = styled.button`
   background: ${(props) =>
-    props.primary ? "#242424" : "rgba(36, 36, 36, 0.5)"};
+    props.primary ? "#202020" : "rgba(36, 36, 36, 0.5)"};
   border: ${(props) =>
     props.primary ? "none" : "1px solid rgba(255, 255, 255, 0.5)"};
   color: #ffffff;

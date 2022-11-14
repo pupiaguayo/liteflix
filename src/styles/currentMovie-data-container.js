@@ -5,17 +5,20 @@ export const CurrentMovieDataContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  span {
+  p {
     margin-top: 48vh;
     text-transform: uppercase;
     color: #ffffff;
-    font-weight: 400;
+    font-weight: 100;
     font-size: 1.25em;
-    line-height: 20px;
+    line-height: 1em;
     letter-spacing: 0.25em;
+    span {
+      font-weight: 400;
+    }
   }
   h2 {
-    font-weight: 700;
+    font-weight: 500;
     font-size: 5.5em;
     letter-spacing: 8px;
     text-transform: uppercase;
@@ -32,8 +35,8 @@ export const CurrentMovieDataContainer = styled.div`
     justify-content: center;
     align-items: center;
     text-align: center;
-    span {
-      margin-top: 30vh;
+    p {
+      margin-top: 15vh;
     }
     div {
       margin: auto;

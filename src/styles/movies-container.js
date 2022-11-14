@@ -19,6 +19,11 @@ export const MoviesContainer = styled.div`
     span {
       font-weight: bold;
     }
+    button{
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
   }
 
   @media screen and (max-width: 900px) {

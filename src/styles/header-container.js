@@ -15,15 +15,4 @@ export const HeaderContainer = styled.div`
       background: none;
     }
   }
-  h1 {
-    span {
-      font-weight: bold;
-    }
-    font-style: normal;
-    font-weight: 100;
-    font-size: 2.125em;
-    line-height: 34px;
-    letter-spacing: 4px;
-    color: #64eebc;
-  }
 `;
