@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MenuContainer = styled.div`
+const MenuContainer = styled.div`
   background: rgba(36, 36, 36, 0.6);
   top: 0;
   right: 0;
@@ -22,10 +22,7 @@ export const MenuContainer = styled.div`
       align-items: center;
       height: 80px;
       padding: 0 65px;
-      button {
-        border: none;
-        background-color: transparent;
-      }
+      gap:30px;
     }
     ul {
       padding: 0 80px;
@@ -42,13 +39,24 @@ export const MenuContainer = styled.div`
     }
   }
   @media screen and (max-width: 900px) {
-    background: none;
+    background-color: #202020;
     nav {
-      background: rgba(36, 36, 36, 0.9);
+      background-color: #202020;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
+      ul {
+        padding: 0 30px;
+        li {
+        padding: 25px 0;
+      }
+      }
     }
   }
 `;
+const ButtonClose = styled.button`
+  border: none;
+  background-color: transparent;
+`;
+export { MenuContainer, ButtonClose };

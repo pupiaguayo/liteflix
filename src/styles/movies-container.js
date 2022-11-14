@@ -5,7 +5,6 @@ export const MoviesContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   padding: 20px 0;
   gap: 0.9em;
   h3 {

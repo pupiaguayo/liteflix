@@ -1,5 +1,5 @@
 import React from "react";
-import { MenuContainer } from "../styles/menu-container";
+import { MenuContainer, ButtonClose } from "../styles/menu-container";
 import { AddMovieButton } from "../utils/add-movie-button";
 import {
   ProfileIcon,
@@ -15,9 +15,9 @@ export const Menu = ({ setMenu }) => {
       <MenuContainer>
         <nav>
           <div>
-            <button onClick={handleCancelClick}>
+            <ButtonClose onClick={handleCancelClick}>
               <CloseIcon />
-            </button>
+            </ButtonClose>
             <div>
             <NotificationBellIcon />
             <ProfileIcon />
