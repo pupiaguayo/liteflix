@@ -7,7 +7,7 @@ import { Select } from "../utils/dropdown-select";
 export const MoviesColumn = () => {
   const { popularMovies, dropdownValue } = useContext(MoviesContext);
   let options = ["POPULARES", "MIS PELICULAS"];
-  let savedItem = localStorage.getItem("formValues");
+  let savedItem = JSON.parse(localStorage.getItem("formValues"));
   return (
     <MoviesContainer>
       <Select label="POPULARES" values={options} />
@@ -23,11 +23,13 @@ export const MoviesColumn = () => {
               ></MovieCard>
             ))
         : savedItem
-            ?.slice(0, 1)
+            ?.slice(0, 4)
             .map((movie) => (
               <MovieCard
                 title={movie.title}
-                urlMovie={movie.backdrop_path}
+                urlMovie={movie.image}
+                average="7.2"
+                year="2018"
               ></MovieCard>
             ))}
     </MoviesContainer>

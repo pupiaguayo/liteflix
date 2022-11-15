@@ -1,5 +1,5 @@
 import React from "react";
-import { MenuContainer, ButtonClose } from "../styles/menu-container";
+import { MenuContainer, ButtonClose, IconsContainer } from "../styles/menu-container";
 import { AddMovieButton } from "../utils/add-movie-button";
 import {
   ProfileIcon,
@@ -18,10 +18,10 @@ export const Menu = ({ setMenu }) => {
             <ButtonClose onClick={handleCancelClick}>
               <CloseIcon />
             </ButtonClose>
-            <div>
-            <NotificationBellIcon />
-            <ProfileIcon />
-            </div>
+            <IconsContainer>
+              <NotificationBellIcon />
+              <ProfileIcon />
+            </IconsContainer>
           </div>
           <ul>
             <li>Inicio </li>
@@ -31,7 +31,7 @@ export const Menu = ({ setMenu }) => {
             <li>Populares</li>
             <li>Mis peliculas</li>
             <li>Mi lista</li>
-            <AddMovieButton/>
+            <AddMovieButton primary={true} />
             <li>Cerrar Sesion</li>
           </ul>
         </nav>

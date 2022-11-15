@@ -1,13 +1,16 @@
-import React, { useState } from "react";
-import styled, { css } from "styled-components";
+import React, { useState, useContext } from "react";
+import MoviesContext from "../context/movies/movies-context";
+import styled from "styled-components";
 import { AddMovieButton } from "./add-movie-button";
 import { LogoLiteflix } from "./logo";
 import {
   NotificationBellIcon,
   MenuDesktopIcon,
   MenuMobileIcon,
-  ProfileIcon,
+  CloseIcon,
 } from "../utils/icons/icons";
+import { ButtonCloseMobile } from "../styles/menu-container";
+import { UserIcon } from "./profile-icon";
 import { Menu } from "../components/menu";
 
 const HeaderContainer = styled.div`
@@ -44,12 +47,17 @@ const HeaderMobile = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 100;
   }
 `;
 export const Header = () => {
+  const { modalState } = useContext(MoviesContext);
   const [sidemenu, setSidemenu] = useState(false);
   const showSidebar = () => {
     setSidemenu(true);
+  };
+  const handleCancelClick = () => {
+    setSidemenu(false);
   };
   return (
     <>
@@ -65,16 +73,22 @@ export const Header = () => {
               <MenuDesktopIcon />
             </button>
             <NotificationBellIcon />
-            <ProfileIcon />
+            <UserIcon />
           </div>
         </HeaderDesktop>
 
         <HeaderMobile>
-          <button onClick={showSidebar}>
-            <MenuMobileIcon />
-          </button>
+          {modalState || !sidemenu  ? (
+            <button onClick={showSidebar}>
+              <MenuMobileIcon />
+            </button>
+          ) : (
+            <ButtonCloseMobile onClick={handleCancelClick}>
+              <CloseIcon />
+            </ButtonCloseMobile>
+          )}
           <LogoLiteflix />
-          <ProfileIcon />
+          <UserIcon />
         </HeaderMobile>
       </HeaderContainer>
       {sidemenu && <Menu setMenu={setSidemenu} />}

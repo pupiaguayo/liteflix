@@ -15,8 +15,10 @@ const ButtonAddMovie = styled.button`
   letter-spacing: 4px;
   border: none;
   gap: 10px;
+  padding: ${(props) =>
+    props.primary === true ? "30px 0" : "none"};
 `;
-export const AddMovieButton = () => {
+export const AddMovieButton = ({primary}) => {
   const { getModalState } = useContext(MoviesContext);
 
   const addMovieModal = () => {
@@ -24,7 +26,7 @@ export const AddMovieButton = () => {
   };
 
   return (
-    <ButtonAddMovie onClick={addMovieModal}>
+    <ButtonAddMovie primary={primary} onClick={addMovieModal}>
       <PlusIcon /> <span>Agregar Pelicula</span>
     </ButtonAddMovie>
   );

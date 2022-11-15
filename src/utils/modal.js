@@ -15,6 +15,9 @@ const ModalContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 900px) {
+    background: #202020;
+  }
 `;
 const Modal = styled.div`
   background-color: #202020;
@@ -24,10 +27,6 @@ const Modal = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  @media screen and (max-width: 900px) {
-    width: 100vw;
-    height: 100vh;
-  }
 `;
 const CloseModal = styled.button`
   margin-top: 2%;
@@ -36,6 +35,9 @@ const CloseModal = styled.button`
   color: white;
   background-color: transparent;
   right: 0;
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
 `;
 const AddMovieTitle = styled.h4`
   font-size: 20px;
@@ -43,13 +45,13 @@ const AddMovieTitle = styled.h4`
   text-transform: uppercase;
   color: #64eebc;
 `;
-const AddArchiveInput = styled.label`
+const AddArchiveInput = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
   width: 80%;
-  height: 25%;
+  height: 20%;
   background-color: transparent;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -57,12 +59,26 @@ const AddArchiveInput = styled.label`
   border-style: dotted;
   border: 2px dotted #ffff;
   cursor: pointer;
+  label {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 90%;
+    @media screen and (max-width: 900px) {
+      justify-content: center;
+    span{
+
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+  }
   input {
     display: none;
   }
 `;
 
-const MovieTitle = styled.label`
+const MovieTitle = styled.input`
   background-color: transparent;
   text-align: center;
   width: 40%;
@@ -71,8 +87,19 @@ const MovieTitle = styled.label`
   color: white;
   text-transform: uppercase;
   letter-spacing: 2px;
-  input {
-    display: none;
+  margin-top: 10px;
+  &::placeholder {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1em;
+  }
+  outline: none;
+
+  @media screen and (max-width: 900px) {
+    width: 65%;
+    margin-top: 30px;
+    margin-bottom: 50px;
   }
 `;
 export const ModalMovies = () => {
@@ -81,12 +108,10 @@ export const ModalMovies = () => {
   const closeMovieModal = () => {
     getModalState(false);
   };
-  const [myMovies, setMyMovies] = useState([
-    {
-      title: "",
-      image: "",
-    },
-  ]);
+  const [myMovies, setMyMovies] = useState({
+    title: "",
+    image: "",
+  });
 
   const [formValues, setFormValues] = useState([]);
 
@@ -101,11 +126,13 @@ export const ModalMovies = () => {
       <Modal>
         <CloseModal onClick={closeMovieModal}>X</CloseModal>
         <AddMovieTitle>Agregar Pelicula</AddMovieTitle>
-        <AddArchiveInput for="inputAddMovie">
-          <AttachIcon />
-          Agregá un archivo o arrastralo y soltalo aquí
+        <AddArchiveInput>
+          <label for="files">
+            <AttachIcon />
+            <span>Agregá un archivo o arrastralo y soltalo aquí</span>
+          </label>
           <input
-            id="inputAddMovie"
+            id="files"
             type="file"
             value={myMovies.image}
             onChange={(e) =>
@@ -116,18 +143,25 @@ export const ModalMovies = () => {
             }
           />
         </AddArchiveInput>
-        <MovieTitle for="inputMovieTitle">
-          Titulo
-          <input
-            id="inputMovieTitle"
-            type="file"
-            value={myMovies.title}
-            onChange={(e) =>
-              setMyMovies({ ...myMovies, title: e.target.value })
-            }
-          />
-        </MovieTitle>
-        <ButtonModal title={"Subir PELICULA"} onClick={submitForm} />
+        <MovieTitle
+          type="text"
+          placeholder="titulo"
+          value={myMovies.title}
+          onChange={(e) => setMyMovies({ ...myMovies, title: e.target.value })}
+        />
+        <ButtonModal
+          primary={"primary"}
+          title={"subir pelicula"}
+          onClick={() => {
+            submitForm();
+          }}
+        />
+        <ButtonModal
+          title={"salir"}
+          onClick={() => {
+            closeMovieModal();
+          }}
+        />
       </Modal>
     </ModalContainer>
   );

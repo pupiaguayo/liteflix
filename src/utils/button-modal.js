@@ -1,14 +1,33 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const Button = styled.button`
   width: 40%;
   height: 46px;
   margin-top: 10px;
-  color: #242424;
+  color: ${(props) => (props.primary === "primary" ? "#242424" : "#ffff")};
   text-transform: uppercase;
   letter-spacing: 4px;
+  border: ${(props) =>
+    props.primary === "primary" ? "none" : "1px solid #ffff"};
+  background-color: ${(props) =>
+    props.primary === "primary" ? "#ffff" : "transparent"};
+      @media screen and (max-width: 900px) {
+    width: 65%;
+  }
+  ${(props) =>
+    props.primary !== "primary" &&
+    css`
+      @media only screen and (min-width: 900px) {
+        display: none;
+      }
+    `}
+
 `;
-export const ButtonModal = ({ title }) => {
-  return <Button>{title}</Button>;
+export const ButtonModal = ({ title, onClick, primary }) => {
+  return (
+    <Button primary={primary} onClick={onClick}>
+      {title}
+    </Button>
+  );
 };
