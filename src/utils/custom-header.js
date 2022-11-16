@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import MoviesContext from "../context/movies/movies-context";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { AddMovieButton } from "./add-movie-button";
 import { LogoLiteflix } from "./logo";
 import {
@@ -13,11 +13,20 @@ import { ButtonCloseMobile } from "../styles/menu-container";
 import { UserIcon } from "./profile-icon";
 import { Menu } from "../components/menu";
 
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 const HeaderContainer = styled.div`
   grid-column: 1/6;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  animation: ${fadeIn} 1s ease-in-out;
   button {
     cursor: pointer;
     border: none;

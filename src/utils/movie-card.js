@@ -6,7 +6,14 @@ const DataHover = styled.div`
   display: none;
   width: 100%;
 `;
+const Icon = styled.span``;
 
+const IconHover = styled.span`
+  display: none;
+  &:hover {
+    stroke: #db632e;
+  }
+`;
 const TitleButton = styled.div`
   width: 100%;
 `;
@@ -44,6 +51,12 @@ const MovieCardStyles = styled.div`
         overflow: hidden;
         margin-left: 15px;
       }
+      ${Icon} {
+        display: none;
+      }
+      ${IconHover} {
+        display: block;
+      }
     }
     ${DataHover} {
       display: flex;
@@ -63,11 +76,16 @@ const MovieCardStyles = styled.div`
     }
   }
 `;
-export const MovieCard = ({ title, urlMovie, average, year }) => {
+export const MovieCard = ({ title, urlMovie, average, year, src }) => {
   return (
-    <MovieCardStyles img={`https://image.tmdb.org/t/p/w500/${urlMovie}`}>
+    <MovieCardStyles img={urlMovie}>
       <TitleButton>
-        <PlayMovieIcon />
+        <Icon>
+          <PlayMovieIcon />
+        </Icon>
+        <IconHover>
+          <HoverPlayMovieIcon />
+        </IconHover>
         <h3>{title}</h3>
       </TitleButton>
       <DataHover>

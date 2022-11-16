@@ -1,4 +1,13 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 
 export const MoviesContainer = styled.div`
   grid-column: 5/6;
@@ -7,6 +16,7 @@ export const MoviesContainer = styled.div`
   align-items: center;
   padding: 20px 0;
   gap: 0.9em;
+  animation: ${fadeIn} 3s ease-in-out;
   h3 {
     font-weight: 400;
     font-size: 18px;

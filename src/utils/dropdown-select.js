@@ -1,8 +1,11 @@
 import React, { useState, useContext } from "react";
 import MoviesContext from "../context/movies/movies-context";
-import styled, { css } from "styled-components";
-import { ArrowDropdown } from "./icons/icons";
+import styled, { css, keyframes } from "styled-components";
+import { ArrowDropdown, CheckIcon } from "./icons/icons";
 
+const CheckIconContainer = styled.span`
+  display: none;
+`;
 const SelectContainer = styled.div`
   width: 100%;
 `;
@@ -32,13 +35,11 @@ const DropdownStyle = styled.div`
   margin-top: 12px;
   right: 60px;
   width: 300px;
-  height: auto;
   padding: 0.4rem;
   display: flex;
   flex-direction: column;
   border: none;
   background-color: #202020;
-  transition: max-height 0.2s ease;
   padding: 20px 0;
   ${(p) =>
     p.isVisible !== true &&
@@ -58,6 +59,7 @@ const DropdownStyle = styled.div`
 const DropdownItem = styled.div`
   width: auto;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   color: white;
   margin: 0.15rem 0;
@@ -69,6 +71,9 @@ const DropdownItem = styled.div`
     p.active &&
     css`
       font-weight: bolder;
+      ${CheckIconContainer} {
+        display: block;
+      }
     `}
   &:hover, :focus, :focus:hover {
     outline: none;
@@ -79,9 +84,9 @@ const DropdownItem = styled.div`
 `;
 
 export const Select = ({ label, values, onChange }) => {
-  const { getDropdownValue } = useContext(MoviesContext);
-  const [currentValue, setCurrentValue] = useState("");
+  const { getDropdownValue, dropdownValue } = useContext(MoviesContext);
   const [open, setOpen] = useState(false);
+
   const handleOpen = () => {
     setOpen(true);
   };
@@ -89,29 +94,33 @@ export const Select = ({ label, values, onChange }) => {
     setOpen(false);
   };
   const handleValueChange = (value) => {
-    setCurrentValue(value);
-   getDropdownValue(value);
+    getDropdownValue(value);
   };
   const handleChange = (value) => {
     handleValueChange(value);
     if (onChange) onChange(value);
     handleClose();
   };
+
   return (
     <SelectContainer>
       <SelectLabelButton onClick={handleOpen}>
         <span>Ver:</span>
-        {currentValue !== "" ? currentValue : label}
+        {dropdownValue !== "" ? dropdownValue : label}
         <ArrowDropdown />
       </SelectLabelButton>
-      <DropdownStyle isVisible={open}>
+
+      <DropdownStyle isVisible={open} open={open}>
         {values.map((value, index) => (
           <DropdownItem
             onClick={() => handleChange(value)}
-            active={value === currentValue}
+            active={value === dropdownValue}
             key={index}
           >
             {value}
+            <CheckIconContainer>
+              <CheckIcon />
+            </CheckIconContainer>
           </DropdownItem>
         ))}
       </DropdownStyle>

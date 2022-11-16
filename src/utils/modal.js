@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import MoviesContext from "../context/movies/movies-context";
 import { AttachIcon } from "./icons/icons";
 import { ButtonModal } from "./button-modal";
+import { LoadingBar } from "./loading-bar";
 import styled from "styled-components";
 
 const ModalContainer = styled.div`
@@ -19,6 +20,7 @@ const ModalContainer = styled.div`
     background: #202020;
   }
 `;
+
 const Modal = styled.div`
   background-color: #202020;
   width: 630px;
@@ -28,6 +30,7 @@ const Modal = styled.div`
   align-items: center;
   gap: 20px;
 `;
+
 const CloseModal = styled.button`
   margin-top: 2%;
   margin-left: 92%;
@@ -39,12 +42,14 @@ const CloseModal = styled.button`
     display: none;
   }
 `;
+
 const AddMovieTitle = styled.h4`
   font-size: 20px;
   letter-spacing: 4px;
   text-transform: uppercase;
   color: #64eebc;
 `;
+
 const AddArchiveInput = styled.div`
   display: flex;
   justify-content: center;
@@ -66,12 +71,11 @@ const AddArchiveInput = styled.div`
     width: 90%;
     @media screen and (max-width: 900px) {
       justify-content: center;
-    span{
-
-      white-space: nowrap;
-      overflow: hidden;
+      span {
+        white-space: nowrap;
+        overflow: hidden;
+      }
     }
-  }
   }
   input {
     display: none;
@@ -102,12 +106,14 @@ const MovieTitle = styled.input`
     margin-bottom: 50px;
   }
 `;
+
 export const ModalMovies = () => {
   const { getModalState } = useContext(MoviesContext);
 
   const closeMovieModal = () => {
     getModalState(false);
   };
+
   const [myMovies, setMyMovies] = useState({
     title: "",
     image: "",
@@ -118,6 +124,22 @@ export const ModalMovies = () => {
   const submitForm = () => {
     setFormValues((prevFormValues) => [...prevFormValues, myMovies]);
   };
+
+  const inputMovieImages = (e) => {
+    const file = e.target.files[0];
+    let fileReader;
+    if (file) {
+      fileReader = new FileReader();
+      fileReader.onload = (e) => {
+        const { result } = e.target;
+        if (result) {
+          setMyMovies({ ...myMovies, image: result });
+        }
+      };
+      fileReader.readAsDataURL(file);
+    }
+  };
+
   useEffect(() => {
     localStorage.setItem("formValues", JSON.stringify(formValues));
   }, [formValues]);
@@ -127,20 +149,15 @@ export const ModalMovies = () => {
         <CloseModal onClick={closeMovieModal}>X</CloseModal>
         <AddMovieTitle>Agregar Pelicula</AddMovieTitle>
         <AddArchiveInput>
-          <label for="files">
+          <label htmlFor="files">
             <AttachIcon />
             <span>Agregá un archivo o arrastralo y soltalo aquí</span>
           </label>
           <input
             id="files"
             type="file"
-            value={myMovies.image}
-            onChange={(e) =>
-              setMyMovies({
-                ...myMovies,
-                image: e.target.value,
-              })
-            }
+            defaultValue={myMovies.image}
+            onChange={(e) => inputMovieImages(e)}
           />
         </AddArchiveInput>
         <MovieTitle

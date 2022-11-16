@@ -1,5 +1,29 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+const translateLeft = keyframes`
+  from {
+    transform: translateX(-100%)
+  }
+  to {
+    transform: translateX(0)
+  }
+`;
+const translateRight = keyframes`
+  from {
+    transform: translateX(100%)
+  }
+  to {
+    transform: translateX(0)
+  }
+`;
 export const CurrentMovieDataContainer = styled.div`
   grid-column: 1/5;
   display: flex;
@@ -7,12 +31,15 @@ export const CurrentMovieDataContainer = styled.div`
   align-items: flex-start;
   p {
     margin-top: 48vh;
+    margin-bottom: 0;
     text-transform: uppercase;
     color: #ffffff;
     font-weight: 100;
     font-size: 1.25em;
     line-height: 1em;
     letter-spacing: 0.25em;
+    animation: ${fadeIn} 1.5s ease-in-out;
+    animation: ${translateRight} 1.5s ease-in-out;
     span {
       font-weight: 400;
     }
@@ -29,12 +56,15 @@ export const CurrentMovieDataContainer = styled.div`
     letter-spacing: 8px;
     text-transform: uppercase;
     color: #64eebc;
-    margin-top: 5px;
+    margin-top: 0;
     margin-bottom: 30px;
+    animation: ${fadeIn} 1.5s ease-in-out;
+    animation: ${translateLeft} 1.5s ease-in-out;
   }
   div {
     display: flex;
     gap: 20px;
+    animation: ${fadeIn} 2s ease-in-out;
   }
   @media screen and (max-width: 900px) {
     grid-column: 1/6;
@@ -44,7 +74,7 @@ export const CurrentMovieDataContainer = styled.div`
     p {
       margin-top: 15vh;
     }
-    h2{
+    h2 {
       white-space: normal;
     }
     div {
