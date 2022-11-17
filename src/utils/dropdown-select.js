@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import MoviesContext from "../context/movies/movies-context";
-import styled, { css, keyframes } from "styled-components";
+import styled, { css } from "styled-components";
 import { ArrowDropdown, CheckIcon } from "./icons/icons";
 
 const CheckIconContainer = styled.span`

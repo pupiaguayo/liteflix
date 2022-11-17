@@ -24,28 +24,24 @@ const ContainerHome = styled.div`
     padding: 0 15px;
     font-size: 12px;
     background-image: linear-gradient(rgba(36, 36, 36, 0.3), #202020, #202020),
-      url(${(props) => props.posterUrl});
+      url(${(props) => props.imgUrl});
     background-position: top center;
-    background-size: 100%;
+    background-attachment: local;
     background-repeat: no-repeat;
   }
 `;
 export const Home = () => {
   const { starMovie, modalState, getStarMovie, getPopularMovies } =
     useContext(MoviesContext);
+  let PATH_URL = "https://image.tmdb.org/t/p/original/";
   let imageUrl = starMovie.backdrop_path;
-  let posterUrl = starMovie.poster_path;
-
   useEffect(() => {
     getStarMovie();
     getPopularMovies();
   }, []);
 
   return (
-    <ContainerHome
-      imgUrl={`https://image.tmdb.org/t/p/w500${imageUrl}`}
-      posterUrl={`https://image.tmdb.org/t/p/w500${posterUrl}`}
-    >
+    <ContainerHome imgUrl={imageUrl ? `${PATH_URL}${imageUrl}` : ""}>
       <Header />
       <CurrentMovieData title={starMovie.title} />
       <MoviesColumn />

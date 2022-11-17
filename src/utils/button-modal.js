@@ -12,9 +12,12 @@ const Button = styled.button`
     props.primary === "primary" ? "none" : "1px solid #ffff"};
   background-color: ${(props) =>
     props.primary === "primary" ? "#ffff" : "transparent"};
-      @media screen and (max-width: 900px) {
+    opacity:${(props) =>
+    props.disabled === true ? "0.5" : "1"};
+  @media screen and (max-width: 900px) {
     width: 65%;
   }
+  cursor: pointer;
   ${(props) =>
     props.primary !== "primary" &&
     css`
@@ -22,11 +25,10 @@ const Button = styled.button`
         display: none;
       }
     `}
-
 `;
-export const ButtonModal = ({ title, onClick, primary }) => {
+export const ButtonModal = ({ title, onClick, primary, disabled }) => {
   return (
-    <Button primary={primary} onClick={onClick}>
+    <Button primary={primary} onClick={onClick} disabled={disabled}>
       {title}
     </Button>
   );

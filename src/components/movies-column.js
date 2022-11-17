@@ -9,7 +9,7 @@ export const MoviesColumn = () => {
 
   let options = ["POPULARES", "MIS PELICULAS"];
   let savedItem = JSON.parse(localStorage.getItem("formValues"));
-  
+  let BASE_PATH = "https://image.tmdb.org/t/p/w500/";
   return (
     <MoviesContainer>
       <Select label={dropdownValue} values={options} />
@@ -19,7 +19,7 @@ export const MoviesColumn = () => {
             .map((movie) => (
               <MovieCard
                 title={movie.title}
-                urlMovie={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+                urlMovie={`${BASE_PATH}${movie.backdrop_path}`}
                 average={movie.vote_average}
                 year={movie.release_date}
                 key={movie.id}

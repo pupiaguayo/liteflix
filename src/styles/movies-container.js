@@ -34,7 +34,10 @@ export const MoviesContainer = styled.div`
       cursor: pointer;
     }
   }
-
+p{
+  text-transform: uppercase;
+  color: #64EEBC;
+}
   @media screen and (max-width: 900px) {
     grid-column: 1/6;
     margin: auto;

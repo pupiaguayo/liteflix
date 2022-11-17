@@ -28,7 +28,7 @@ export const MoviesState = (props) => {
       const data = res.results;
       dispatch({ type: GET_POPULAR_MOVIES, payload: data });
     } catch (e) {
-      console.log(e);
+      alert(e)
     }
   };
   const getStarMovie = async () => {
@@ -40,7 +40,7 @@ export const MoviesState = (props) => {
       const data = res.results;
       dispatch({ type: GET_STAR_MOVIE, payload: data[0] });
     } catch (e) {
-      console.log(e);
+      alert(e)
     }
   };
   const getModalState = (statex) => {
