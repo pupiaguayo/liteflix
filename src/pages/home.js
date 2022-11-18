@@ -30,7 +30,7 @@ const ContainerHome = styled.div`
   background-position: center center;
 
   @media screen and (max-width: 900px) {
-    height: 100%;
+    max-height: 100%;
     overflow: scroll;
     padding: 0 15px;
     font-size: 12px;
