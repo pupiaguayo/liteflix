@@ -8,13 +8,13 @@ const translateRight = keyframes`
     transform: translateX(0)
   }
   `;
-  const translateLeft = keyframes`
-  from {
-    transform: translateX(-100%)
-  }
-  to {
-    transform: translateX(0)
-  }
+const translateMobile = keyframes`
+from {
+  transform:translateX(-100%)
+}
+to {
+  transform: translateX(0)
+}
 `;
 const IconsContainer = styled.div``;
 const ButtonClose = styled.button`
@@ -71,10 +71,10 @@ const MenuContainer = styled.div`
     }
   }
   @media screen and (max-width: 900px) {
-    animation: ${translateLeft } 1.5s ease-in-out;
-    background-color: #202020;
+    background-color: transparent;
+    animation: ${translateMobile } 1s;
     nav {
-      animation: ${translateLeft } 1.5s ease-in-out;
+      animation: ${translateMobile } 1s;
       background-color: #202020;
       top: 0;
       left: 0;

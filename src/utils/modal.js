@@ -39,6 +39,7 @@ const ModalContainer = styled.div`
   }
   @media screen and (max-width: 900px) {
     background: #202020;
+    animation: ${translateLeft} 1s ease-in-out;
   }
 `;
 
