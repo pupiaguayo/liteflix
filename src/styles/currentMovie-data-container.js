@@ -10,18 +10,18 @@ const fadeIn = keyframes`
 `;
 const translateLeft = keyframes`
   from {
-    transform: translateX(-100%)
+    transform: translate3d(-100%, 0, 0 )
   }
   to {
-    transform: translateX(0)
+    transform: translate3d(0, 0, 0 )
   }
 `;
 const translateRight = keyframes`
   from {
-    transform: translateX(100%)
+    transform: translate3d(100%, 0, 0 )
   }
   to {
-    transform: translateX(0)
+    transform: translate3d(0, 0, 0 )
   }
 `;
 export const CurrentMovieDataContainer = styled.div`

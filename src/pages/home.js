@@ -45,12 +45,12 @@ export const Home = () => {
   const { starMovie, modalState, getStarMovie, getPopularMovies } =
     useContext(MoviesContext);
   const [loading, setLoading] = useState(true);
-  let PATH_URL = "https://image.tmdb.org/t/p/original/";
+  let PATH_URL = "https://image.tmdb.org/t/p/w780/";
   let imageUrl = starMovie.backdrop_path;
   useEffect(() => {
     getStarMovie();
     getPopularMovies();
-    setTimeout(() => setLoading(false), 2000)
+    setTimeout(() => setLoading(false), 1000)
   }, []);
 
   return (

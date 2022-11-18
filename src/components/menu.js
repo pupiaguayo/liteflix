@@ -15,7 +15,7 @@ export const Menu = ({ setMenu }) => {
       <MenuContainer>
         <nav>
           <div>
-            <ButtonClose onClick={handleCancelClick}>
+            <ButtonClose onClick={handleCancelClick} aria-label="Button Close">
               <CloseIcon />
             </ButtonClose>
             <IconsContainer>
@@ -31,7 +31,7 @@ export const Menu = ({ setMenu }) => {
             <li>Populares</li>
             <li>Mis peliculas</li>
             <li>Mi lista</li>
-            <AddMovieButton primary={true} />
+            <AddMovieButton primary={true}/>
             <li>Cerrar Sesion</li>
           </ul>
         </nav>

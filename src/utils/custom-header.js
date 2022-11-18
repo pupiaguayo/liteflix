@@ -88,11 +88,11 @@ export const Header = () => {
 
         <HeaderMobile>
           {modalState || !sidemenu  ? (
-            <button onClick={showSidebar}>
+            <button onClick={showSidebar} aria-label="Button Open Sidebar">
               <MenuMobileIcon />
             </button>
           ) : (
-            <ButtonCloseMobile onClick={handleCancelClick}>
+            <ButtonCloseMobile onClick={handleCancelClick} aria-label="Button Close Menu">
               <CloseIcon />
             </ButtonCloseMobile>
           )}

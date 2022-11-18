@@ -104,7 +104,7 @@ export const Select = ({ label, values, onChange }) => {
 
   return (
     <SelectContainer>
-      <SelectLabelButton onClick={handleOpen}>
+      <SelectLabelButton onClick={handleOpen} aria-label="Button Select Label">
         <span>Ver:</span>
         {dropdownValue !== "" ? dropdownValue : label}
         <ArrowDropdown />

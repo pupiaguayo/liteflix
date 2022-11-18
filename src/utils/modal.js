@@ -1,17 +1,17 @@
 import React, { useEffect, useState, useContext } from "react";
 import MoviesContext from "../context/movies/movies-context";
-import { AttachIcon } from "./icons/icons";
+import { AttachIcon, CloseIcon } from "./icons/icons";
 import { ButtonModal } from "./button-modal";
 import { LoadingBar } from "./loading-bar";
 import { LogoLiteflix } from "./logo";
 import styled, { css, keyframes } from "styled-components";
 
-const translateLeft = keyframes`
+const translateBottom = keyframes`
 from {
-  transform: translateY(100vh)
+  transform: translate3d(0, 100vh, 0 )
 }
 to {
-  transform: translateX(0)
+  transform: translate3d(0, 0, 0 )
 }
 `;
 const ModalContainer = styled.div`
@@ -39,7 +39,7 @@ const ModalContainer = styled.div`
   }
   @media screen and (max-width: 900px) {
     background: #202020;
-    animation: ${translateLeft} 1s ease-in-out;
+    animation: ${translateBottom} 1s ease-in-out;
   }
 `;
 
@@ -51,7 +51,7 @@ const Modal = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  animation: ${translateLeft} 1s ease-in-out;
+  animation: ${translateBottom} 1s ease-in-out;
 `;
 
 const CloseModal = styled.button`
@@ -202,7 +202,9 @@ export const ModalMovies = () => {
       <Modal>
         {conditionView ? (
           <>
-            <CloseModal onClick={closeMovieModal}>X</CloseModal>
+            <CloseModal onClick={closeMovieModal} aria-label="Button Close Modal">
+              <CloseIcon />
+            </CloseModal>
             <AddMovieTitle>Agregar Pelicula</AddMovieTitle>
             <AddArchiveInput primary={viewInput}>
               <label htmlFor="files">

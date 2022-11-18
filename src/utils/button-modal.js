@@ -28,7 +28,7 @@ const Button = styled.button`
 `;
 export const ButtonModal = ({ title, onClick, primary, disabled }) => {
   return (
-    <Button primary={primary} onClick={onClick} disabled={disabled}>
+    <Button primary={primary} onClick={onClick} disabled={disabled} aria-label="Button openModal">
       {title}
     </Button>
   );

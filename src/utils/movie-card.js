@@ -14,7 +14,7 @@ const IconHover = styled.span`
     stroke: #db632e;
   }
 `;
-const TitleButton = styled.div`
+const TitleMovie = styled.div`
   width: 100%;
 `;
 const MovieCardStyles = styled.div`
@@ -38,7 +38,7 @@ const MovieCardStyles = styled.div`
     text-transform: uppercase;
   }
   &:hover {
-    ${TitleButton} {
+    ${TitleMovie} {
       display: flex;
       width: 90%;
       align-items: center;
@@ -79,7 +79,7 @@ const MovieCardStyles = styled.div`
 export const MovieCard = ({ title, urlMovie, average, year, src }) => {
   return (
     <MovieCardStyles img={urlMovie}>
-      <TitleButton>
+      <TitleMovie>
         <Icon>
           <PlayMovieIcon />
         </Icon>
@@ -87,7 +87,7 @@ export const MovieCard = ({ title, urlMovie, average, year, src }) => {
           <HoverPlayMovieIcon />
         </IconHover>
         <h3>{title}</h3>
-      </TitleButton>
+      </TitleMovie>
       <DataHover>
         <div>
           <StarIcon />

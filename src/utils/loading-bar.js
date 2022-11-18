@@ -77,11 +77,11 @@ export const LoadingBar = ({ percentProp, viewInput, onClick, color }) => {
         <Progress percent={percentProp} color={color} />
       </Container>
       {color !== "success" ? (
-        <ActionButton onClick={onClick}>reintentar</ActionButton>
+        <ActionButton onClick={onClick} aria-label="Button Retry">reintentar</ActionButton>
       ) : percentProp < 100 ? (
-        <ActionButton onClick={onClick}>cancelar</ActionButton>
+        <ActionButton onClick={onClick} aria-label="Button Cancel Upload">cancelar</ActionButton>
       ) : (
-        <ActionButton onClick={onClick}>Listo!</ActionButton>
+        <ActionButton onClick={onClick} aria-label="Button Ready">Listo!</ActionButton>
       )}
     </ContainerBar>
   );

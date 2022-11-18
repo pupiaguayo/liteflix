@@ -26,7 +26,7 @@ export const AddMovieButton = ({primary}) => {
   };
 
   return (
-    <ButtonAddMovie primary={primary} onClick={addMovieModal}>
+    <ButtonAddMovie primary={primary} onClick={addMovieModal} aria-label="Button AddMovie">
       <PlusIcon /> <span>Agregar Pelicula</span>
     </ButtonAddMovie>
   );

@@ -2,18 +2,18 @@ import styled, { keyframes } from "styled-components";
 
 const translateRight = keyframes`
   from {
-    transform: translateX(100%)
+    transform: translate3d(100%, 0, 0 )
   }
   to {
-    transform: translateX(0)
+    transform: translate3d(0, 0, 0 )
   }
   `;
 const translateMobile = keyframes`
 from {
-  transform:translateX(-100%)
+  transform: translate3d(-100%, 0, 0 )
 }
 to {
-  transform: translateX(0)
+  transform: translate3d(0, 0, 0 )
 }
 `;
 const IconsContainer = styled.div``;

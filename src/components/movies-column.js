@@ -9,7 +9,7 @@ export const MoviesColumn = () => {
 
   let options = ["POPULARES", "MIS PELICULAS"];
   let savedItem = JSON.parse(localStorage.getItem("formValues"));
-  let BASE_PATH = "https://image.tmdb.org/t/p/w500/";
+  let BASE_PATH = "https://image.tmdb.org/t/p/w780/";
   return (
     <MoviesContainer>
       <Select label={dropdownValue} values={options} />

@@ -9,12 +9,12 @@ export const CurrentMovieData = ({title}) => {
       <p>Original de <span>Liteflix</span></p>
       <h2>{title}</h2>
       <div>
-        <ButtonStyle primary>
+        <ButtonStyle primary aria-label="Button Play">
           {" "}
           <PlayIcon/>
           Reproducir
         </ButtonStyle>
-        <ButtonStyle>
+        <ButtonStyle aria-label="Button MyList">
           {" "}
           <PlusIcon/>
           Mi lista
