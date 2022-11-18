@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 const ContainerBar = styled.div`
-  width: 100%;
+  width: 90%;
   height: 20%;
   display: flex;
   flex-direction: column;
@@ -14,16 +14,16 @@ const ContainerBar = styled.div`
     `}
   span {
     color: white;
-    padding-left: 5%;
     letter-spacing: 2px;
+    display: flex;
+    justify-content: flex-start;
   }
 `;
 const Container = styled.div`
   margin: auto;
   height: 7px;
-  width: 90%;
+  width: 100%;
   position: relative;
-  border: 1px solid white;
   span {
     color: white;
     margin-right: 30px;
@@ -46,17 +46,21 @@ const Background = styled(BaseBox)`
 `;
 
 const Progress = styled(BaseBox)`
-  background: ${(props) => (props.color === "success" ? "#64eebc" : "red")};
+  background: ${(props) => (props.color === "success" ? "#64eebc" : "#ff0000")};
   width: ${({ percent }) => percent}%;
 `;
 const ActionButton = styled.button`
   border: none;
-  width: 10px;
-  padding-left: 80%;
+  letter-spacing: 3px;
+  font-weight: 700;
   background-color: transparent;
   color: white;
   text-transform: uppercase;
   font-size: 14px;
+  width: 50%;
+  margin-left: 50%;
+  display: flex;
+  justify-content: end;
 `;
 export const LoadingBar = ({ percentProp, viewInput, onClick, color }) => {
   return (

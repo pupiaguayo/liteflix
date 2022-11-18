@@ -104,6 +104,8 @@ const AddArchiveInput = styled.div`
       span {
         white-space: nowrap;
         overflow: hidden;
+        width: 130px;
+        margin-left: 15px;
       }
     }
   }

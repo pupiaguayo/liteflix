@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, Suspense } from "react";
 import MoviesContext from "../context/movies/movies-context";
 import styled from "styled-components";
 import { Header } from "../utils/custom-header";
@@ -10,7 +10,7 @@ const ContainerHome = styled.div`
   padding: 0 60px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  height: 100vh;
+  height: 100%;
   background-image: linear-gradient(
       rgba(36, 36, 36, 0.6),
       rgba(36, 36, 36, 0.6)
@@ -42,10 +42,10 @@ export const Home = () => {
 
   return (
     <ContainerHome imgUrl={imageUrl ? `${PATH_URL}${imageUrl}` : ""}>
-      <Header />
-      <CurrentMovieData title={starMovie.title} />
-      <MoviesColumn />
-      {modalState && <ModalMovies />}
+        <Header />
+        <CurrentMovieData title={starMovie.title} />
+        <MoviesColumn />
+        {modalState && <ModalMovies />}
     </ContainerHome>
   );
 };
